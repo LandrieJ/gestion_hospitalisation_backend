@@ -1,17 +1,18 @@
+
 FROM python:3.11-slim
 
-# Préparer un dossier de travail
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+
 WORKDIR /app
 
-# Copier uniquement ce qui est utile
-COPY back-end/ /app/
+COPY requirements.txt .
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt \
+    && pip install --no-cache-dir gunicorn
 
-# Installer pip + dépendances
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+COPY . .
 
-# Exposer le port utilisé par Django
 EXPOSE 8000
 
-# Commande d'entrée
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["gunicorn", "gestion_hospitalisation.wsgi:application", "--bind", "0.0.0.0:8000"]
