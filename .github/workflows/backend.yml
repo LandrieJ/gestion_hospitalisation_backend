@@ -76,6 +76,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/gestion_hospitalisation_backend:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/gestion_hospitalisation_backend:${{ github.sha }}
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/gestion_hospitalisation_backend:latest
