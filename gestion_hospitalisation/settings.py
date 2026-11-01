@@ -12,13 +12,14 @@ else:
 
 # Sécurité
 SECRET_KEY = os.getenv("SECRET_KEY", "changeme-in-production")
-DEBUG = os.getenv("DEBUG", "False").lower() == "true"
-#ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+DEBUG = False
+
 ALLOWED_HOSTS = [
     "84.12.80.134.nip.io",
     "localhost",
     "127.0.0.1",
 ]
+
 
 # --- APPLICATIONS ---
 INSTALLED_APPS = [
@@ -104,7 +105,7 @@ SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SAMESITE = "Lax"
 #SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "")
 SESSION_COOKIE_SECURE = False
-SESSION_EXPIRE_AT_BROWSER_CLOSE = (True)
+SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 CSRF_USE_SESSIONS = True # Utiliser la session pour stocker le token CSRF
 CSRF_COOKIE_NAME = "csrftoken"
@@ -113,6 +114,7 @@ CSRF_COOKIE_SECURE = False
 CSRF_COOKIE_HTTPONLY = False
 #CSRF_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_HTTPONLY = False
+CSRF_COOKIE_SAMESITE = "Lax"
 
 # --- CORS ---
 #CORS_ALLOW_CREDENTIALS = True
@@ -123,10 +125,18 @@ CSRF_COOKIE_HTTPONLY = False
 # --- CORS ---
 CORS_ALLOW_CREDENTIALS = True
 
+#CORS_ALLOWED_ORIGINS = [
+   # origin.strip()
+    #for origin in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
+    #if origin.strip()
+#]
+# CORS
+# ==============================
+
 CORS_ALLOWED_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv("CORS_ALLOWED_ORIGINS", "").split(",")
-    if origin.strip()
+    "http://84.12.80.134.nip.io",
+    "http://localhost:1003",
+    "http://127.0.0.1:1003",
 ]
 
 #CSRF_TRUSTED_ORIGINS = [
@@ -144,7 +154,6 @@ CORS_ALLOW_HEADERS = [
     "x-csrftoken",
     "content-type",
     "authorization",
-    "cookie",
 ]
 
 # --- DJANGO REST FRAMEWORK ---
