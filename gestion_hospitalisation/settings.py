@@ -13,7 +13,12 @@ else:
 # Sécurité
 SECRET_KEY = os.getenv("SECRET_KEY", "changeme-in-production")
 DEBUG = os.getenv("DEBUG", "False").lower() == "true"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+#ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost").split(",")
+ALLOWED_HOSTS = [
+    "84.12.80.134.nip.io",
+    "localhost",
+    "127.0.0.1",
+]
 
 # --- APPLICATIONS ---
 INSTALLED_APPS = [
@@ -120,12 +125,14 @@ CORS_ALLOWED_ORIGINS = [
     if origin.strip()
 ]
 
+#CSRF_TRUSTED_ORIGINS = [
+    #origin.strip()
+   # for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
+   # if origin.strip()
+#]
 CSRF_TRUSTED_ORIGINS = [
-    origin.strip()
-    for origin in os.getenv("CSRF_TRUSTED_ORIGINS", "").split(",")
-    if origin.strip()
+    "http://84.12.80.134.nip.io",
 ]
-
 
 CORS_ALLOW_HEADERS = [
     "accept",
