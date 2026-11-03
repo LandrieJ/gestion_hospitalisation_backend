@@ -146,6 +146,7 @@ CORS_ALLOWED_ORIGINS = [
 #]
 CSRF_TRUSTED_ORIGINS = [
     "http://hospitalisation.duckdns.org",
+    "https://hospitalisation.duckdns.org", 
 ]
 
 CORS_ALLOW_HEADERS = [
