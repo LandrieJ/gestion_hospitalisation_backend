@@ -15,7 +15,7 @@ SECRET_KEY = os.getenv("SECRET_KEY", "changeme-in-production")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "84.12.80.134.nip.io",
+    "hospitalisation.duckdns.org",
     "localhost",
     "127.0.0.1",
 ]
@@ -134,7 +134,7 @@ CORS_ALLOW_CREDENTIALS = True
 # ==============================
 
 CORS_ALLOWED_ORIGINS = [
-    "http://84.12.80.134.nip.io",
+    "http://hospitalisation.duckdns.org",
     "http://localhost:1003",
     "http://127.0.0.1:1003",
 ]
@@ -145,7 +145,7 @@ CORS_ALLOWED_ORIGINS = [
    # if origin.strip()
 #]
 CSRF_TRUSTED_ORIGINS = [
-    "http://84.12.80.134.nip.io",
+    "http://hospitalisation.duckdns.org",
 ]
 
 CORS_ALLOW_HEADERS = [
