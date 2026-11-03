@@ -98,19 +98,21 @@ AUTH_USER_MODEL = "comptes.CustomUser"
 AUTHENTICATION_BACKENDS = ("django.contrib.auth.backends.ModelBackend",)
 
 # --- SESSIONS ET CSRF ---
-SESSION_ENGINE = ("django.contrib.sessions.backends.db")
+#SESSION_ENGINE = ("django.contrib.sessions.backends.db")
+SESSION_ENGINE = "django.contrib.sessions.backends.db"
+#SESSION_COOKIE_NAME = "sessionid"
 SESSION_COOKIE_NAME = "sessionid"
 SESSION_COOKIE_HTTPONLY = True
 #SESSION_COOKIE_SAMESITE = "None"
 SESSION_COOKIE_SAMESITE = "Lax"
 #SESSION_COOKIE_SECURE = os.getenv("SESSION_COOKIE_SECURE", "")
-SESSION_COOKIE_SECURE = False
+SESSION_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
 CSRF_USE_SESSIONS = True # Utiliser la session pour stocker le token CSRF
 CSRF_COOKIE_NAME = "csrftoken"
 #CSRF_COOKIE_SECURE = os.getenv("CSRF_COOKIE_SECURE", "")
-CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_SECURE = True
 CSRF_COOKIE_HTTPONLY = False
 #CSRF_COOKIE_SAMESITE = "None"
 CSRF_COOKIE_HTTPONLY = False
@@ -159,7 +161,6 @@ CORS_ALLOW_HEADERS = [
     "content-type",
     "authorization",
 ]
-
 # --- DJANGO REST FRAMEWORK ---
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
