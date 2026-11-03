@@ -135,6 +135,7 @@ CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://hospitalisation.duckdns.org",
+    "https://hospitalisation.duckdns.org",
     "http://localhost:1003",
     "http://127.0.0.1:1003",
 ]
@@ -146,7 +147,9 @@ CORS_ALLOWED_ORIGINS = [
 #]
 CSRF_TRUSTED_ORIGINS = [
     "http://hospitalisation.duckdns.org",
-    "https://hospitalisation.duckdns.org", 
+    "https://hospitalisation.duckdns.org",
+    "http://localhost:1003",
+    "http://127.0.0.1:1003",
 ]
 
 CORS_ALLOW_HEADERS = [
